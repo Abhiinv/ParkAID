@@ -65,9 +65,34 @@
 			<location>C:/Users/gupta/Downloads/jar_files/mysql-connector-java-8.0.16.jar</location>
 		</link>
 		<link>
+			<name>src/main/webapp/assets/css/css.css</name>
+			<type>1</type>
+			<location>C:/Users/gupta/eclipse-workspace/carpark/src/main/webapp/assets/css/css.css</location>
+		</link>
+		<link>
 			<name>src/main/webapp/assets/css/main.css</name>
 			<type>1</type>
 			<location>C:/Users/gupta/Downloads/Telegram Desktop/register/css/main.css</location>
+		</link>
+		<link>
+			<name>src/main/webapp/assets/images/PM_OTP.jpg</name>
+			<type>1</type>
+			<location>C:/Users/gupta/eclipse-workspace/carpark/src/main/webapp/assets/images/PM_OTP.jpg</location>
+		</link>
+		<link>
+			<name>src/main/webapp/assets/images/abhinav.jpeg</name>
+			<type>1</type>
+			<location>C:/Users/gupta/eclipse-workspace/carpark/src/main/webapp/assets/images/abhinav.jpeg</location>
+		</link>
+		<link>
+			<name>src/main/webapp/assets/images/aboutimg.jpg</name>
+			<type>1</type>
+			<location>C:/Users/gupta/Downloads/aboutimg.jpg</location>
+		</link>
+		<link>
+			<name>src/main/webapp/assets/images/ansh.jpeg</name>
+			<type>1</type>
+			<location>C:/Users/gupta/eclipse-workspace/carpark/src/main/webapp/assets/images/ansh.jpeg</location>
 		</link>
 		<link>
 			<name>src/main/webapp/assets/images/bg-heading-02.jpg</name>
@@ -90,6 +115,16 @@
 			<location>C:/Users/gupta/Downloads/front-view-lots-cars-parked-260nw-1824445478.jpg</location>
 		</link>
 		<link>
+			<name>src/main/webapp/assets/images/devbansal.jpeg</name>
+			<type>1</type>
+			<location>C:/Users/gupta/eclipse-workspace/carpark/src/main/webapp/assets/images/devbansal.jpeg</location>
+		</link>
+		<link>
+			<name>src/main/webapp/assets/images/kj.jpg</name>
+			<type>1</type>
+			<location>C:/Users/gupta/eclipse-workspace/carpark/src/main/webapp/assets/images/kj.jpg</location>
+		</link>
+		<link>
 			<name>src/main/webapp/assets/images/log.jpg</name>
 			<type>1</type>
 			<location>C:/Users/gupta/Downloads/pexels-kris-lucas-3264504 (1).jpg</location>
@@ -103,6 +138,21 @@
 			<name>src/main/webapp/assets/images/logo-2.jpg</name>
 			<type>1</type>
 			<location>C:/Users/gupta/Downloads/Capture.jpg</location>
+		</link>
+		<link>
+			<name>src/main/webapp/assets/images/long.png</name>
+			<type>1</type>
+			<location>C:/Users/gupta/eclipse-workspace/carpark/src/main/webapp/assets/images/long.png</location>
+		</link>
+		<link>
+			<name>src/main/webapp/assets/images/park.jpg</name>
+			<type>1</type>
+			<location>C:/Users/gupta/Downloads/park.jpg</location>
+		</link>
+		<link>
+			<name>src/main/webapp/assets/images/registimg.jpg</name>
+			<type>1</type>
+			<location>C:/Users/gupta/eclipse-workspace/carpark/src/main/webapp/assets/images/registimg.jpg</location>
 		</link>
 		<link>
 			<name>src/main/webapp/assets/images/worker.jpg</name>

@@ -66,7 +66,8 @@
       </label> -->
                                     <label for="Location"><span>Location</span></label>
                                     <form action="./location.jsp" method="post">
-                                        <select name="Location" id="location">
+                                      	<input list="browse" name="location">
+                                        <datalist id="browse">
         									<option value="" disabled selected>-Select a Location-</option>
         									<option value="CP">Counnaught Place </option>
         									<option value="OAB">Old Academic Block</option>
@@ -75,8 +76,7 @@
         									<option value="M1">Mess 1</option>
         									<option value="M2">Mess 2</option>
         									<option value="SAC">Student Activity Center</option>
-      									</select>
-  										<input type="text" required>
+      									</datalist>
   										<label for="dates"><span>Select a date:
         								<input type="date" id="dates" name="dates"></span>
       									</label>

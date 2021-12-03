@@ -1,206 +1,262 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ page import = "java.io.*,java.util.*,java.sql.*"%>
-<%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<%@page import="java.sql.*,java.util.*"%>
+<%@page import="java.io.*,java.util.*, java.io.BufferedReader.*, java.io.InputStreamReader.*,java.io.OutputStreamWriter.*, java.net.URL.*,java.net.URLConnection.*, java.net.URLEncoder.*" %>    
+<%@page import="java.net.HttpURLConnection.*" %>
 
-<div class="container"><h1>Welcome</h1>
-       
-         
-         <%
-         try {
-        	 
-        	 
-        	String email = (String)request.getSession().getAttribute("EMAIL_VIA_LOGIN");
-        	 
-        	final String usern = "root";
-    		final String pasw = "Ansh2514@";
-    		Class.forName("com.mysql.jdbc.Driver");
-    		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users",usern,pasw);
-        	 Statement st=conn.createStatement();
-        	 ResultSet  i =st.executeQuery("SELECT * from user2 WHERE email= " + "'" +  email + "'"  );
-        	
-        	 if(i.next()){
-        		 String str = i.getString("fname");
-         	 	out.println(str);
-        	 }
-        	 	
-        	 	
-        	 
-         }
-         
-         catch(Exception e){
-        	 System.out.println(e.toString());
-         }
-         %>       
-        
-         </div>
-        
-     
-      <div class="message">
-          <div class="container">
-              
-              
-              <div class="row">
-                    <div class="col-12 text-center">
-                    	<%
-                    	try{
-                    		String location=request.getParameter("Locate");
-                    		String Date=request.getParameter("Date");
-                    		
-                    		Class.forName("com.mysql.jdbc.Driver");
-                    		Connection conn = DriverManager.getConnection("jdbc:mysql:// localhost:3306/users", "root", "Ansh2514@");
-                    		Statement st=conn.createStatement();
-                    		ResultSet  i =st.executeQuery("SELECT * from parkingslots WHERE location = " + "'" +  location + "'" + " and dateofEvent = " + "'" + Date + "'" );
-                    		out.println("<table><tr><th>Location</th></tr></table>");
-                    		while(i.next()){
-                    			
-                    	    out.println("<html><div class='card'>" + "<img src='img.jpg' alt='Avatar' style='width:100%'><div class='container'><h4><b>John Doe</b></h4><p>Architect & Engineer</p></div></div></html>");
-                    	    
-                    		out.println("<html><table><tr><td> " + i.getString(1) + "&nbsp&nbsp&nbsp" + i.getString(2) + " </td> </tr></table></html>"); 
-                    		}
-                    	}
-                    	catch(Exception e)
-                    	{
-                    		out.println(e.toString());
-                    	}
-                    	%>
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <h1 class="text-warning">Locations</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse justify-content-end" id="navbarMenu">
+                <ul class="navbar-nav d-md-none ">
+                    <li class="nav-item">
+                        <a class="nav-link text-muted active" href="#">
+                            <i class="fas fa-home mr-2"></i>Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item bg-light">
+                        <a class="nav-link" href="#">
+                            <i class="mr-2 fas fa-list "></i> App
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">
+                            <i class="mr-2 fas fa-envelope-open"></i> MailBOX
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">
+                            <i class="mr-2 fas fa-desktop"></i> UI Elements
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="mr-2 fas fa-asterisk"></i> UI Elements
+                        </a>
+                    </li>
+                </ul>
+
+
+                <ul class="navbar-nav">
+                    <li class="nav-item mr-2">
+                        <a class="nav-link text-muted" href="#">
+                            <i class="fas fa-search "></i>
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-bell "></i>
+                        </a>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-comment"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item mr-5">
+                        <a class="nav-link" href="#">
+                            <img src="https://cdn1.iconfinder.com/data/icons/avatar-2-2/512/Manager-512.png" width="30" alt="" class=" img-fluid rounded-circle">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#signOutModal">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-2 sidebar d-flex flex-column list-group list-group-flush viewport-max ">
+                    <a href="#" class="list-group-item list-group-item-action text-center">
+                        <img src="https://cdn1.iconfinder.com/data/icons/avatar-2-2/512/Programmer-512.png" alt="" class="img-fluid rounded-circle mr-2"> John Doe</a>
+                    <a href="#" class="list-group-item list-group-item-action menu-items active">
+                        <i class="fas fa-columns mr-2 fa-lg"></i>Dashboard</a>
+                    <a href="#" class="list-group-item list-group-item-action menu-items">
+                        <i class="fab fa-android mr-2 fa-lg"></i>My Bookings</a>
+                    <a href="#" class="list-group-item list-group-item-action menu-items">
+                        <i class="fas fa-envelope mr-2 fa-lg"></i>Waiting List</a>
+                    <a href="#" class="list-group-item list-group-item-action menu-items">
+                        <i class="fas fa-users mr-2 fa-lg"></i>Cancel Bookings</a>
+                    <a href="#" class="list-group-item list-group-item-action menu-items">
+                        <i class="fas fa-envelope mr-2 fa-lg"></i>My Wallet</a>
+                    <a href="#" class="list-group-item list-group-item-action menu-items">
+                        <i class="fas fa-envelope mr-2 fa-lg"></i>Park Car</a>
+                    <a href="#" class="list-group-item list-group-item-action menu-items">
+                        <i class="fas fa-envelope mr-2 fa-lg"></i>Feedback</a>
+                    <div class="list-group-item">
+                        <h5 class="text-left">FORMS AND TABLES</h5>
                     </div>
-              </div>
-          </div>
-      </div>
-      
-      <div class="what_to_do container">
-           <h2 class="text-center">What we do</h2>
-           <div class="row container">
-                <div class="col-12 col-md-4 col-lg-4 col-xl-4 text-center">
-                    <i class="text-center fab fa-pagelines"></i>
-                    <h3>Lorem Ipsum</h3>
-                    <p> Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#" class="list-group-item-action">
+                                <i class="fab fa-twitter mr-2"></i>Twitter</a>
+                            <span class="badge badge-danger badge-pill">10</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#" class="list-group-item-action">
+                                <i class="fab fa-facebook mr-2"></i>Facebook</a>
+                            <span class="badge badge-danger badge-pill">10</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#" class="list-group-item-action">
+                                <i class="fab fa-google mr-2"></i>Gmail</a>
+                            <span class="badge badge-warning badge-pill">5</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#" class="list-group-item-action">
+                                <i class="fab fa-linkedin-in mr-2"></i>Linkedin</a>
+                            <span class="badge badge-success badge-pill">3</span>
+                        </li>
+                    </ul>
+
+                </div>
+                <form action="getlocation.jsp">
+							<div class="input-group no-border">
+								<%
+								Class.forName("com.mysql.jdbc.Driver");
+								Connection conn = DriverManager.getConnection("jdbc:mysql:// localhost:3306/users", "root", "Ansh2514@");
+								Statement st = conn.createStatement();
+								ResultSet i = st.executeQuery("SELECT * from parkings ");
+
+								out.println("<input list='browsers'  required name ='location'>");
+								out.println("<datalist id='browsers'>");
+								while (i.next()) {
+									String locate = i.getString("location");
+									out.println("<option value='" + locate + "'>");
+								}
+								%>
+
+								</datalist>
+								&nbsp&nbsp&nbsp <input type="date" value="" name="Date"
+									placeholder="Date" required>&nbsp&nbsp&nbsp
+									
+								CheckIn(hrs)&nbsp&nbsp 
+								
+								
+								<input type="number" min="8" max="17"name="Checkin" id = "test1" required >&nbsp&nbsp&nbsp 
+								
+								CheckOut(hrs)&nbsp&nbsp
+								
+								
+								<input type="number" min="8" max="17" name="Checkout" id= "test2 required">
+								
+								
+								&nbsp&nbsp&nbsp
+								<input type="submit" value="Submit" onclick="return Validate()">
+
+							</div>
+
+						</form>
+						<script type="text/javascript">
+							function Validate() {
+								int OUT = document.getElementById("test2").value;
+								int IN = document
+										.getElementById("test1").value;
+								
+								if (OUT-IN > 4) {
+									alert("Maximum Time Exceeded only 4 hrs allowed	");
+									return false;
+								}
+								else if(OUT<=IN){
+									alert("Wrong Data Provided");
+									return false;
+								}
+								else
+								return true;
+							}
+						</script>
+                <!-- MAIN CARDS-->
+                <div class="col-lg-10 py-5 bg-light my-3">
                     <div class="row">
-                          <div class="col-12 text-center">
-                            <button type="button"><a href="#">Read more</a></button>
-                          </div>
+                        <div class="col">
+                            <h2 class="text-info">User Dashboard /
+                                <small class="text-muted">Locations</small>
+                            </h2>
+                        </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 col-lg-4 col-xl-4 text-center">
-                   <i class="text-center fas fa-coffee"></i>
-                   <h3>Lorem Ipsum</h3>
-                   <p> Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
-                   <div class="row">
-                         <div class="col-12 text-center">
-                           <button type="button"><a href="#">Read more</a></button>
-                         </div>
-                   </div>
-                </div>
-                <div class="col-12 col-md-4 col-lg-4 col-xl-4 text-center">
-                    <i class="text-center fas fa-table"></i>
-                    <h3>Lorem Ipsum</h3>
-                    <p> Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
-                    <div class="row">
-                          <div class="col-12 text-center">
-                            <button type="button"><a href="#">Read more</a></button>
-                          </div>
+                
+                <div class="row">
+                    <div class="col-sm-4">
+                        <canvas id="lineChart" width="400" height="400"></canvas>
                     </div>
+                    <div class="col-sm-4">
+                        <canvas id="sampleChart" width="400" height="400"></canvas>
+                    </div>
+                    <div class="col-sm-4">
+                        <canvas id="pieChart" width="400" height="400"></canvas>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+ 
+    <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Already want to leave?</h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="lead">It is sad to see you go. Please press logout to leave.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" data-dismiss="modal">Logout</button>
+                    <div class="btn btn-primary" type="button">Stay</div>
                 </div>
             </div>
-      </div>
-      <div class="four">
-          <div class="container">
-               <h1 class="text-center">There are many variations of passages of Lorem Ipsum available?</h1>
-               <div class="row">
-                     <div class="col-12 text-center">
-                       <button type="button"><a href="#">Read more</a></button>
-                     </div>
-               </div>
-          </div>
-      </div>
-      <div class="five">
-          <h2 class="text-center">Choose your cup of tea</h2>
-          <br>
-          <div class="row container">
-              <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-                  <img src="images/cup/1.jpeg">
-              </div>
-              <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-                  <img src="images/cup/2.jpeg">
-              </div>
-              <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-                  <img src="images/cup/3.jpeg">
-              </div>
-              <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-                  <img src="images/cup/4.jpeg">
-              </div>
-          </div>
-          <br>
-          <div class="row container">
-              <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-                  <img src="images/cup/5.jpeg">
-              </div>
-              <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-                  <img src="images/cup/6.jpeg">
-              </div>
-              <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-                  <img src="images/cup/7.jpeg">
-              </div>
-              <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-                  <img src="images/cup/8.jpeg">
-              </div>
-          </div>
-      </div>
-      <div class="six">
-        <div class="container text-center">
-            <i class="fas fa-quote-left"></i>
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage</p>
         </div>
-        <div class="people row">
-          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <img class="rounded-circle" src="images/people/1.jpeg">
-              <h3 class="text-center">Anna Doe</h3>
-              <p class="text-center">There are many variations of passages of Lorem Ipsum available</p>
-          </div>
-          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <img class="rounded-circle" src="images/people/2.jpeg">
-              <h3 class="text-center">Anna Doe</h3>
-              <p class="text-center">There are many variations of passages of Lorem Ipsum available</p>
-          </div>
-          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <img class="rounded-circle" src="images/people/3.jpeg">
-              <h3 class="text-center">Anna Doe</h3>
-              <p class="text-center">There are many variations of passages of Lorem Ipsum available</p>
-          </div>
-        </div>
-      </div>
-      <div class="letter text-center">
-        <h1 class="text-center">Subscribe to get more info</h1>
-        <p class="text-center">It is a long established fact that a reader</p>
-        <div class="container">
-          <form action="/action_page.php">
-              <div class="form-group">
-                 <input type="email" class="form-control" id="email">
-               </div>
-                <div class="form-group">
-                <input type="telephone" class="form-control" id="pwd">
-                </div>
-           </form>
-           <div class="row">
-                 <div class="col-12 text-center">
-                   <button type="button"><a href="#">Read more</a></button>
-                 </div>
-           </div>
-        </div>
-      </div>
-      <footer>
-          <p class="text-center">FREE HTML template is done by Natallia Rak. Job suggestion: natkayellow@gmail.com<br>
-          bootstrap 4</p>
-      </footer>
-   </body>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <script src="line.js"></script>
+    <script src="sample.js"></script>
+    <script src="pie.js"></script>
+
+    <script>
+        window.addEventListener('load', function() {
+
+            document.querySelector('.navbar-toggler').innerHTML = '<i class="fas fa-arrow-down"></i>';
+        })
+    </script>
+</body>
+
 </html>

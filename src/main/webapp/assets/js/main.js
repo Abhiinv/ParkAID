@@ -1,36 +1,36 @@
 $(function() {
-    
+
     "use strict";
-    
+
     //===== Prealoder
-    
+
     $(window).on('load', function(event) {
         $('.preloader').delay(500).fadeOut(500);
     });
-    
-    
+
+
     //===== Sticky
 
-    $(window).on('scroll', function (event) {
+    $(window).on('scroll', function(event) {
         var scroll = $(window).scrollTop();
         if (scroll < 20) {
             $(".header_navbar").removeClass("sticky");
-            $(".header_navbar img").attr("src", "assets/images/logo-2.jpg");
+            // $(".header_navbar img").attr("src", "assets/images/kj.jpeg");
         } else {
             $(".header_navbar").addClass("sticky");
-            $(".header_navbar img").attr("src", "assets/images/logo-2.jpg");
+            // $(".header_navbar img").attr("src", "assets/images/kj.jpeg");
         }
     });
-    
-    
+
+
     //===== Section Menu Active
 
     var scrollLink = $('.page-scroll');
     // Active link switching
-    $(window).scroll(function () {
+    $(window).scroll(function() {
         var scrollbarLocation = $(this).scrollTop();
 
-        scrollLink.each(function () {
+        scrollLink.each(function() {
 
             var sectionOffset = $(this.hash).offset().top - 73;
 
@@ -40,74 +40,74 @@ $(function() {
             }
         });
     });
-    
+
     //===== close navbar-collapse when a  clicked
 
-    $(".navbar-nav a").on('click', function () {
+    $(".navbar-nav a").on('click', function() {
         $(".navbar-collapse").removeClass("show");
     });
 
-    $(".navbar-toggler").on('click', function () {
+    $(".navbar-toggler").on('click', function() {
         $(this).toggleClass("active");
     });
 
-    $(".navbar-nav a").on('click', function () {
+    $(".navbar-nav a").on('click', function() {
         $(".navbar-toggler").removeClass('active');
     });
-    
-    
+
+
     //===== Counter Up
-    
+
     $('.counter').counterUp({
         delay: 10,
         time: 3000
     });
-    
-    
-    
+
+
+
     //===== Back to top
-    
+
     // Show or hide the sticky footer button
     $(window).on('scroll', function(event) {
-        if($(this).scrollTop() > 600){
+        if ($(this).scrollTop() > 600) {
             $('.back-to-top').fadeIn(200)
-        } else{
+        } else {
             $('.back-to-top').fadeOut(200)
         }
     });
-    
-    
+
+
     //Animate the scroll to yop
     $('.back-to-top').on('click', function(event) {
         event.preventDefault();
-        
+
         $('html, body').animate({
             scrollTop: 0,
         }, 1500);
     });
-    
-    
+
+
     //===== Nice Select
-    
+
     $('select').niceSelect();
-    
-    
+
+
     //=====  WOW active
-    
+
     var wow = new WOW({
         boxClass: 'wow', //
         mobile: false, // 
     })
     wow.init();
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
 });

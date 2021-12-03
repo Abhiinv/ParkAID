@@ -9,9 +9,9 @@
 </head>
 <body>
 	<%
-	String email=request.getParameter("email");
+	String pno=request.getParameter("pno");
 	String pass=request.getParameter("password");
-	request.getSession().setAttribute( "EMAIL_VIA_LOGIN" , email);
+	request.getSession().setAttribute( "PHONE_VIA_LOGIN" , pno);
 	try{
 		//Class.forName("com.mysql.jdbc.Driver");
 		final String usern = "root";
@@ -19,16 +19,16 @@
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users",usern,pasw);
 		Statement st=conn.createStatement();
-		ResultSet  i =st.executeQuery("SELECT * from user2 WHERE email = " + "'" +  email + "'" + " and " + "password = " + "'" + pass + "'"  );
+		ResultSet  i =st.executeQuery("SELECT * from user2 WHERE pno = " + "'" +  pno + "'" + " and " + "password = " + "'" + pass + "'"  );
 		
 
 		if (i.next()) {
 			out.println("<html><meta http-equiv=\"refresh\" \r\n"
-			+ "        content=\"5; url = user.jsp\" /><body><b>" + "</b></body></html>");
+			+ "        content=\"5; url = userdash.jsp\" /><body><b>" + "</b></body></html>");
 
 		} else {
 			out.println("<html><meta http-equiv=\"refresh\" \r\n"
-			+ "        content=\"5; url = log.html\" /><body><b>Password Wrong" + "</b></body></html>");
+			+ "        content=\"5; url = log.html\" /><body><b>Phone Number or Password incorrect" + "</b></body></html>");
 		}
 		
 	}
