@@ -11,7 +11,7 @@
 	<%
 	String pno=request.getParameter("pno");
 	String pass=request.getParameter("password");
-	request.getSession().setAttribute( "PHONE_VIA_LOGIN" , pno);
+	request.getSession().setAttribute("PHONE_VIA_LOGIN" , pno);
 	try{
 		//Class.forName("com.mysql.jdbc.Driver");
 		final String usern = "root";
@@ -24,11 +24,11 @@
 
 		if (i.next()) {
 			out.println("<html><meta http-equiv=\"refresh\" \r\n"
-			+ "        content=\"5; url = userdash.jsp\" /><body><b>" + "</b></body></html>");
+			+ "        content=\"2; url = userdash.jsp\" /><body><b>" + "</b></body></html>");
 
 		} else {
 			out.println("<html><meta http-equiv=\"refresh\" \r\n"
-			+ "        content=\"5; url = log.html\" /><body><b>Phone Number or Password incorrect" + "</b></body></html>");
+			+ "        content=\"2; url = log.html\" /><body><b>Phone Number or Password incorrect" + "</b></body></html>");
 		}
 		
 	}

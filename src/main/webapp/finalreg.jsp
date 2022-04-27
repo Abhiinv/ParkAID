@@ -20,14 +20,14 @@ if(str.equals(str_verify)){
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users",usern,pasw);
 	Statement st=conn.createStatement();
-	int i =st.executeUpdate( "INSERT INTO `users`.`user2` (`fname`, `lname`, `username`, `password`, `confirmpassword`, `address`, `email`, `pno`, `carno`) VALUES ('"+ fname +"', '"+ lname +"', '"+username+"', '"+password+"', '"+cpass+"', '"+address+"', '"+email+"', '"+pno+"', '"+carno+"');");
+	int i =st.executeUpdate( "INSERT INTO `users`.`user2` (`fname`, `lname`, `username`, `password`, `confirmpassword`, `address`, `email`, `pno`, `carno`,`wallet`) VALUES ('"+ fname +"', '"+ lname +"', '"+username+"', '"+password+"', '"+cpass+"', '"+address+"', '"+email+"', '"+pno+"','"+carno+"', '"+"0"+"');");
 	System.out.println(i);
 	out.println("<html><meta http-equiv=\"refresh\" \r\n"
-			+ "        content=\"5; url =log.html\" /><body><b>"
+			+ "        content=\"2; url =log.html\" /><body><b>"
 				+ "</b></body></html>"); 
 }
 else{
-	out.println("Wrong OTP generated, killing previous sessions, enter a new one");
+	out.println("Wrong OTP generated");
 	request.getSession().invalidate();
 	request.getSession().setAttribute("OTP","invalidating");
 	request.getSession().setAttribute("EMAIL_VIA_REGISTER","invalidating");
@@ -42,6 +42,6 @@ else{
 
 	
 	out.println("<html><meta http-equiv=\"refresh\" \r\n"
-			+ "        content=\"5; url = reg.html\" /><body><b>" + "</b></body></html>");
+			+ "        content=\"2; url = reg.html\" /><body><b>" + "</b></body></html>");
 }
 %>

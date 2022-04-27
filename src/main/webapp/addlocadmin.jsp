@@ -133,7 +133,7 @@
                     					catch (Exception e) {
                     						out.println(e);
                     					}%></a>
-                    					<a href="admindash.jsp" class="list-group-item list-group-item-action menu-items">
+                                        <a href="admindash.jsp" class="list-group-item list-group-item-action menu-items">
                                             <i class="fas fa-plus-circle mr-2 fa-lg"></i>Dashboard</a>
                                         <a href="addlocadmin.jsp" class="list-group-item list-group-item-action menu-items">
                                             <i class="fas fa-plus-circle mr-2 fa-lg"></i>Add Places</a>
@@ -155,150 +155,132 @@
                                     </div>
 
                                     <div class="col-10 py-10  bg-light my-3">
-                    <div class="row inform-cards">
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-4">
-                            <div class="card text-white my-2 rounded">
-                                <div class="card-body bg-primary d-flex align-items-center justify-content-between">
-                                    <i class="fas fa-user fa-2x"></i>
-                                    <div class="inner-text text-right">
-                                        <h4>
-                                        <%
-                                        try {
-                    						Class.forName("com.mysql.jdbc.Driver");
-                    						Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "Ansh2514@");
-                    						Statement st = conn.createStatement();
-                    						String pno =(String)request.getSession().getAttribute("EMAIL_VIA_LOGIN");
-                    						ResultSet i = st.executeQuery("SELECT * from admins WHERE email = " + "'" + pno + "'" );
-                    						while(i.next()) {
-                    							String str1 = i.getString("fname");
-                    							out.println(str1);
-                    							
-                    						}
-                    						
-                    					}
-                    					
-                    					catch (Exception e) {
-                    						out.println(e);
-                    					}
-                                        %>
-                                        </h4>
-                                        <h7>
-                                        <%
-                                        try {
-                    						Class.forName("com.mysql.jdbc.Driver");
-                    						Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "Ansh2514@");
-                    						Statement st = conn.createStatement();
-                    						String pno =(String)request.getSession().getAttribute("EMAIL_VIA_LOGIN");
-                    						ResultSet i = st.executeQuery("SELECT * from admins WHERE email = " + "'" + pno + "'" );
-                    						while(i.next()) {
-                    							String str2 = i.getString("lname");
-                    							out.println(str2);
-                    							
-                    						}
-                    						
-                    					}
-                    					
-                    					catch (Exception e) {
-                    						out.println(e);
-                    					}%></h7>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-4">
-                                <div class="card text-white my-2 rounded">
-                                    <div class="card-body bg-primary d-flex align-items-center justify-content-between">
-                                        <i class="fas fa-envelope mr-2 fa-lg"></i>
-                                        <div class="inner-text text-right">
-                                            <h5>
-                                            <% try {
-                    						Class.forName("com.mysql.jdbc.Driver");
-                    						Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "Ansh2514@");
-                    						Statement st = conn.createStatement();
-                    						String pno =(String)request.getSession().getAttribute("EMAIL_VIA_LOGIN");
-                    						ResultSet i = st.executeQuery("SELECT * from admins WHERE email = " + "'" + pno + "'" );
-                    						while(i.next()) {
-                    							String str3 = i.getString("pno");
-                    							out.println(str3);
-                    							
-                    						}
-                    						
-                    					}
-                    					
-                    					catch (Exception e) {
-                    						out.println(e);
-                    					}%></h5>
-                                            <h7>Phone Number</h7>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 p-4">
-                                    <div class="card text-white my-2 rounded">
-                                        <div class="card-body bg-primary d-flex align-items-center justify-content-between">
-                                            <i class="fas fa-tty"></i>
-                                            <div class="inner-text text-right">
-                                                <h4><%try {
-                    						Class.forName("com.mysql.jdbc.Driver");
-                    						Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "Ansh2514@");
-                    						Statement st = conn.createStatement();
-                    						String pno =(String)request.getSession().getAttribute("EMAIL_VIA_LOGIN");
-                    						ResultSet i = st.executeQuery("SELECT * from admins WHERE email = " + "'" + pno + "'" );
-                    						while(i.next()) {
-                    							String str4 = i.getString("email");
-                    							out.println(str4);
-                    							
-                    						}
-                    						
-                    					}
-                    					
-                    					catch (Exception e) {
-                    						out.println(e);
-                    					}%></h4>
-                                                <h7>Email</h7>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-
-                                  <div class="col-sm-6 col-md-4 col-lg-3 p-4">
-                                        <div class="card text-white my-2 rounded">
-                                            <div class="card-body bg-primary d-flex align-items-center justify-content-between">
-                                            <!--  <h6>⭐⭐⭐⭐⭐</h6>-->
-                                                <div class="inner-text text-right">
-                                                    <h4><% try {
-                    						Class.forName("com.mysql.jdbc.Driver");
-                    						Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "Ansh2514@");
-                    						Statement st = conn.createStatement();
-                    						String pno =(String)request.getSession().getAttribute("EMAIL_VIA_LOGIN");
-                    						ResultSet i = st.executeQuery("SELECT * from admins WHERE email = " + "'" + pno + "'" );
-                    						while(i.next()) {
-                    							String str5 = i.getString("address");
-                    							out.println(str5);
-                    							
-                    						}
-                    						
-                    					}
-                    					
-                    					catch (Exception e) {
-                    						out.println(e);
-                    					}%></h4>
-                                                    <h10>Address</h10>
+                                        <div class="row inform-cards">
+                                            <div class="col-sm-6 col-md-4 col-lg p-4">
+                                                <div class="card text-white my-2 rounded">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <h2 id="add_places" class="heading text-white">&nbsp Add
+                                                                Places </h2>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <form action="./insertplace.jsp" method="post">
+                                                        <div class="title"></div>
+                                                        <div class="info">
+                                                            <span class="first">
+                                                                Location
+                                                            </span>
+                                                            <input class="field fname" type="text" name="Locate"
+                                                                style="margin-left:120px">
+                                                            <span class="second">
+                                                                Date
+                                                            </span>
+                                                            <input class="field fname" style="margin-left:155px;"
+                                                                type="date" name="Date"><br><br>
+                                                            <span class="first">
+                                                                Price
+                                                            </span>
+                                                            <input class="field fname" style="margin-left:145px" type="number"
+                                                                step="any" name="Price">
+                                                            <span class="second">
+                                                                Worker Name Assigned
+                                                            </span>
+                                                            <input class="field fname" type="text" name="WorkerName"
+                                                                style="margin-left:26px">
+                                                            <br>
+                                                            <br>
+                                                            <span class="first">
+                                                                <u>NUMBER OF SLOTS FOR EACH TIME DURATION -</u>
+                                                            </span>
+                                                            <br><br>
+                                                            <span class="first-1">
+                                                                05:00 - 06:00
+                                                            </span>
+                                                            <input class="field fname" type="number" name="5-6"
+                                                                required style="margin-left:92px"> <br><br>
+                                                            <span class="first-1">
+                                                                06:00 - 07:00
+                                                            </span>
+                                                            <input class="field fname" type="number" name="6-7"
+                                                                required style="margin-left:92px"> <br><br>
+                                                            <span class="first-1">
+                                                                07:00 - 08:00
+                                                            </span>
+                                                            <input class="field fname" type="number" name="7-8"
+                                                            required style="margin-left:92px"> <br><br>
+                                                            <span class="first-1">
+                                                                08:00 - 09:00
+                                                            </span>
+                                                            <input class="field fname" type="number" name="8-9"
+                                                                required style="margin-left:92px"> <br><br>
+                                                            <span class="first-1">
+                                                                09:00 - 10:00
+                                                            </span>
+                                                            <input class="field fname" type="number" name="9-10"
+                                                            required style="margin-left:92px"> <br><br>
+                                                            <span class="first-1">
+                                                                10:00 - 11:00
+                                                            </span>
+                                                            <input class="field fname" type="number" name="10-11"
+                                                                required style="margin-left:92px"> <br><br>
+                                                            <span class="first-1">
+                                                                11:00 - 12:00
+                                                            </span>
+                                                            <input class="field fname" type="number" name="11-12"
+                                                                required style="margin-left:92px"> <br><br>
+                                                            <span class="first-1">
+                                                                12:00 - 13:00
+                                                            </span>
+                                                            <input class="field fname" type="number" name="12-13"
+                                                                required style="margin-left:92px"> <br><br>
+                                                            <span class="first-1">
+                                                                13:00 - 14:00
+                                                            </span>
+                                                            <input class="field fname" type="number" name="13-14"
+                                                                required style="margin-left:92px"> <br><br>
+                                                            <span class="first-1">
+                                                                14:00 - 15:00
+                                                            </span>
+                                                            <input class="field fname" type="number" name="14-15"
+                                                                required style="margin-left:92px"> <br><br>
+                                                            <span class="first-1">
+                                                                15:00 - 16:00
+                                                            </span>
+                                                            <input class="field fname" type="number" name="15-16"
+                                                                required style="margin-left:92px"> <br><br>
+                                                            <span class="first-1">
+                                                                16:00 - 17:00
+                                                            </span>
+                                                            <input class="field  fname" type="number" name="16-17"
+                                                                required style="margin-left:92px"> <br><br>
+                                                            </span>
+                                                            <button type="submit"
+                                                                class="butt">Submit</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
-               
                                         </div>
-                                    </div>
-                    </div>
-                       <div class="row inform-cards">
+                                        <div class="row inform-cards">
+                                            <div class="col-sm-6 col-md-4 col-lg p-4">
+                                               
+                                            </div>
+                                        </div>
+
+                                        <div class="row inform-cards">
+                                            <div class="col-sm-6 col-md-4 col-lg p-4">
+                                              
+                                            </div>
+                                        </div>
+
+                                        <div class="row inform-cards">
                                             <div class="col-sm-6 col-md-4 col-lg p-4">
                                                
                                             </div>
                                             <div class="row">
                                                 <div class="col-12 text-center">
-                                                    <form action="./Location.jsp" method="post">
+                                                    <!--<form action="./Location.jsp" method="post">-->
                                                         <div class="title"></div>
                                                 </div>
                                             </div>

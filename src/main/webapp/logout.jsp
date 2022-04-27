@@ -9,7 +9,7 @@
 <body>
 	<%
 	
-	out.println("Logging you out, killing previous sessions, enter a new one");
+	out.println("Logging you out");
 	request.getSession().invalidate();
 	request.getSession().setAttribute("OTP","invalidating");
 	request.getSession().setAttribute("EMAIL_VIA_REGISTER","invalidating");
@@ -27,7 +27,7 @@
 
 	
 	out.println("<html><meta http-equiv=\"refresh\" \r\n"
-			+ "        content=\"5; url = home.html\" /><body><b>" + "</b></body></html>");
+			+ "        content=\"2; url = home.html\" /><body><b>" + "</b></body></html>");
 	
 	%>
 </body>

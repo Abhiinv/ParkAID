@@ -2,7 +2,7 @@
 <%@page import="java.io.*,java.util.*, java.io.BufferedReader.*, java.io.InputStreamReader.*,java.io.OutputStreamWriter.*, java.net.URL.*,java.net.URLConnection.*, java.net.URLEncoder.*" %>    
 <%@page import="java.net.HttpURLConnection.*" %>
 
-<!DOCTYPE html>
+<!doctype html>
 
 <html lang="en">
 
@@ -11,20 +11,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="assets/images/favicon-32x32.png" type="image/png">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
 
-    <title>Park With Us</title>
+    <title>My booking</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <h1 class="text-warning">Locations</h1>
+                <h1 class="text-warning">My Bookings</h1>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -61,7 +60,34 @@
                 </ul>
 
 
-                
+                <ul class="navbar-nav">
+                    <li class="nav-item mr-2">
+                        <a class="nav-link text-muted" href="#">
+                            <i class="fas fa-search "></i>
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-bell "></i>
+                        </a>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-comment"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item mr-5">
+                        <a class="nav-link" href="#">
+                            <img src="https://cdn1.iconfinder.com/data/icons/avatar-2-2/512/Manager-512.png" width="30" alt="" class=" img-fluid rounded-circle">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#signOutModal">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -89,117 +115,73 @@
                     						out.println(e);
                     					}%></a>
                 
-                     <a href="userdash.jsp" class="list-group-item list-group-item-action menu-items">
+                      <a href="userdash.jsp" class="list-group-item list-group-item-action menu-items">
                         <i class="fas fa-columns mr-2 fa-lg"></i>Dashboard</a>
                     <a href="mybooking.jsp" class="list-group-item list-group-item-action menu-items">
                         <i class="fas fa-calendar-check mr-2 fa-lg"></i></i>My Bookings</a>
                     <a href="waitdash.jsp" class="list-group-item list-group-item-action menu-items">
                         <i class="fas fa-pause-circle mr-2 fa-lg"></i>Waiting List</a>
-                    <a href="cashback.jsp" class="list-group-item list-group-item-action menu-items">
+                    <a href="cashback.jsp" class="list-group-item list-group-item-action menu-items active">
                         <i class="fas fa-money-bill-alt mr-2 fa-lg"></i>Special Offer</a>
                     <a href="mywallet.jsp" class="list-group-item list-group-item-action menu-items">
                         <i class="fas fa-wallet mr-2 fa-lg"></i>My Wallet</a>
-                    <a href="location.jsp" class="list-group-item list-group-item-action menu-items active">
+                    <a href="location.jsp" class="list-group-item list-group-item-action menu-items">
                         <i class="fas fa-car mr-2 fa-lg"></i>Park Car</a>
                        <a href="cancellation.jsp" class="list-group-item list-group-item-action menu-items">
                         <i class="fas fa-window-close mr-2 fa-lg"></i>Cancel Booking</a>
                     <a href="reviewtype.jsp" class="list-group-item list-group-item-action menu-items">
                         <i class="fas fa-user-edit mr-2 fa-lg"></i>Feedback</a>
                     <div class="list-group-item">
-                    </div>
+=                    </div>
                     
-
-                </div>
-                <form action="getlocation.jsp">
-                <br> 
-                <style>
-                	input{
-                	border: 3px solid #f0ad4e;
-                	color: text-warning;
-                	}
-                	input:focus{
-                	border: 1px solid black;
-                	}
-                </style>
-                <br><br><br><br><br><br><br>
-                <div  style="margin-left: 200px">
-                <h4>Enter details to get the perfect parking spot:</h4>
-     
-							<div class="input-group no-border">
-								<%
-								Class.forName("com.mysql.jdbc.Driver");
-								Connection conn = DriverManager.getConnection("jdbc:mysql:// localhost:3306/users", "root", "Ansh2514@");
-								Statement st = conn.createStatement();
-								ResultSet i = st.executeQuery("SELECT * from parkings ");
-								out.println("<input list='browsers' placeholder='Location'  required name ='location' style='height:50px; width:250px'>");
-								out.println("<datalist id='browsers'>");
-								while (i.next()) {
-									String locate = i.getString("location");
-									out.println("<option value='" + locate + "'>");
-								}
-								%>
-
-								</datalist>
-								&nbsp
-								<input type="date" value="Check In(hrs)" name="Date" style="height:50px" required>
-								&nbsp
-								<input type="number" min="5" max="17" name="Checkin" id = "test1" placeholder="Check In(hrs)" style="width:130px; height:50px; border-c" required >
-								&nbsp
-								<input type="number" min="5" max="17" name="Checkout" id= "test2" placeholder="Check Out(hrs)" style="width:130px; height:50px" required>
-								&nbsp
-								<input type="submit" value="Submit" onclick="return Validate()" style="width:130px; height:50px; background: #2c6ed5; color: white;">
-
-							</div>
-					</div>
-							
-
-						</form>
-						<script type="text/javascript">
-							function Validate() {
-								int OUT = document.getElementById("test2").value;
-								int IN = document
-										.getElementById("test1").value;
-								
-								if (OUT-IN > 4) {
-									alert("Maximum Time Exceeded only 4 hrs allowed	");
-									return false;
-								}
-								else if(OUT<=IN){
-									alert("Wrong Data Provided");
-									return false;
-								}
-								else
-								return true;
-							}
-						</script>
-                <!-- MAIN CARDS-->
-                <div class="col-lg-10 py-5 bg-light my-3">
-                    <div class="row">
-                        <div class="col">
-                            <h2 class="text-info">User Dashboard /
-                                <small class="text-muted">Locations</small>
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-sm-4">
-                        <canvas id="lineChart" width="400" height="400"></canvas>
-                    </div>
-                    <div class="col-sm-4">
-                        <canvas id="sampleChart" width="400" height="400"></canvas>
-                    </div>
-                    <div class="col-sm-4">
-                        <canvas id="pieChart" width="400" height="400"></canvas>
-                    </div>
                 </div>
 
+      <!-- End Navbar -->
+      <div class="panel-header panel-header-sm">
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-header text-center">
+                <h4 class="card-title">SPECIAL OFFER</h3>
+                  <p class="card-category">GET DISCOUNT ON YOUR NEXT BOOKING WITH US UPTO 20%</p>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive table-upgrade">
+                  <table class="table">
+                  	<%
+                  	String phone = (String)request.getSession().getAttribute("PHONE_VIA_LOGIN");
+                  	if(phone==null){	
+                  	phone = (String)request.getSession().getAttribute("NUMBER_VIA_REGISTER");}
+                  	Class.forName("com.mysql.jdbc.Driver");
+            		Connection conn1 = DriverManager.getConnection("jdbc:mysql:// localhost:3306/users", "root", "Ansh2514@");
+            		Statement st1=conn1.createStatement();
+            		ResultSet  i1 =st1.executeQuery("SELECT * from payments where pno = '" +phone+ "'" );
+            		int count=0;
+            		while(i1.next()){
+            		count++;	
+            			
+            		}
+            		if(count > 0){
+            			out.println("<center><a href='offer.jsp'>Get Discount</a></center>");
+
+            		}
+            		else{
+            			out.println("<center>No offers available :(</center>");
+            		}
+                  	
+                  	
+                  	%>
+           			
+                  </table>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
- 
-      <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog">
+      </div>
+       <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog">
                             <div class="modal-dialog  modal-dialog-centered">
                                 <div class="modal-content">
                                     <span class="modal-body"><h2 class="lead">Are you sure you wanna logout?</h2></span>

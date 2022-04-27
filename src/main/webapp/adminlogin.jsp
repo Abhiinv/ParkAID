@@ -27,7 +27,7 @@ try{
 	}
 	else{
 		out.println("<html><meta http-equiv=\"refresh\" \r\n"
-				+ "        content=\"5; url = admin.jsp\" /><body><b>Wrong Password"
+				+ "        content=\"2; url = admin.jsp\" /><body><b>Wrong Password"
 					+ "</b></body></html>");	
 	}
 	

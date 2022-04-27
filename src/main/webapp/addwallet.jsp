@@ -22,9 +22,7 @@ try {
 		
 	}
 	t2 = Float.parseFloat(Value);
-	t1=t1+t2/1000;
-	
-	
+	t1=t1+t2;
 	
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection conn = DriverManager.getConnection("jdbc:mysql:// localhost:3306/users", "root", "Ansh2514@");
